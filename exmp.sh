@@ -26,18 +26,22 @@ zips=ls | grep -q "$today"
 
 for zips in *_*-${two_days}*.txt;
 do
+
+# Check for the date conditions less that present date
 	if (((10#$yy == 10#$date) && (10#$mm <= 10#$date) && (10#$dd < 10#$date)))
 then
-	[ -f "${zips}" ] || continue
+	[ -f "${zips}" ] || continue     # If file exists continue
 		
-		date=${*-$zips}
-		date=${*-$date}
+		date=${*-$zips}	        # Stores that file name in date variable	
+		date=${*-$date}		# present date is saved to the date variable
 	
 	echo "${date}"	
 	
 #	bzip2 "${two_days}.bz2" *${two_days}*
 
 	else
+# zipping the file with two days previous file name to .bz2 extention
+
 		bzip2 "${two_days}.bz2" *${two_days}*
 
 	fi
