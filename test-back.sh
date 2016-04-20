@@ -41,7 +41,7 @@ for i in ${str[@]}
 do
     if [ -d $i ]
 then
-        sudo cqlsh -e "DESC KEYSPACE $i" > $backup_schema_dir/${i}_schema_${today_date}.txt
+        cqlsh -e "DESC KEYSPACE $i" > $backup_schema_dir/${i}_schema_${today_date}.txt
 else
 	echo "directory $i does not exist"
 fi
